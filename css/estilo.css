@@ -4,14 +4,18 @@ body {
 	font-size: 20px;
 	box-sizing: border-box;
 }
+.img-background{
+	position:absolute;
+	z-index: 0;
+}
 .modal-inicio {
 	background: #000a;
 	width:200vh;
-	height: 100vh;
+	height: 120%;
 	position: absolute;
 	margin: 0;
 	padding:0;
-
+z-index: 100;
 	
 }
 .modal-datos {
@@ -20,7 +24,7 @@ body {
 	width: 45%;
 	height: 45%;
 	background: radial-gradient( circle, #0008 , #5cd6d5aa );
-
+z-index: 80;
 	text-align:center;
 	color: white;
 }
@@ -37,14 +41,16 @@ font-size: 25px;
 background:#5cd6d5;
 color: white;
 border:5px solid #8cbdd9;
-transition: 1s background
+transition: 1s background;
+z-index: 100;
 }
 
 .modal-datos__button:hover{
 	background:#1f7a7a;
+	z-index: 80;
 }
 .jugador {
-	
+	z-index: 80;
 	margin: 50px;
 }
 
@@ -52,7 +58,14 @@ transition: 1s background
 	margin-top: 250px;
 	display: flex;
 	justify-content: center;
-	
+	z-index: 80;
+}
+.imgs{
+	display: block;
+	width: 170px;
+	text-align: center;
+  margin: auto;
+  margin-top: 33%;
 }
 .item-flex {
 	
@@ -63,7 +76,9 @@ transition: 1s background
 	border-radius: 7px;
 	margin: 10px 50px;
 	transition: 0.5s all;
+	z-index: 80;
 }.item-flex:hover {
-	background:#5cd6d5;
+	background:#5cd6d5aa;
+	z-index: 80;
 	
 }
