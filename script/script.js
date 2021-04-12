@@ -30,7 +30,7 @@ let	 puntosRandomOneThree = puntosRandom()
 	itemThree.innerHTML = `podrían haber sido ${puntosRandomOneThree}`
 	if(puntosRandomOne > puntosRandomOneTwo  && puntosRandomOne >  puntosRandomOneThree){
 		setTimeout (function ChangeColor(){
-			itemOne.style.background =" green"
+			itemOne.style.background =" #08D85A"
 			itemTwo.style.background =  "red"
 			itemThree.style.background = "red"
 		},1)
@@ -55,8 +55,8 @@ let	 puntosRandomOneThree = puntosRandom()
 	} else if (puntosRandomOne < puntosRandomOneThree && puntosRandomOne < puntosRandomOneTwo){
 		setTimeout (function ChangeColor(){
 			itemOne.style.background = "red"
-			itemTwo.style.background  = "green"
-			itemThree.style.background= "green"
+			itemTwo.style.background  = "#08D85A"
+			itemThree.style.background= "#08D85A"
 		},1)
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background =" #bbb"
@@ -81,7 +81,7 @@ let	 puntosRandomTwoThree = puntosRandom()
 	if(puntosRandomTwo > puntosRandomTwoOne  && puntosRandomTwo >  puntosRandomTwoThree){
 		setTimeout (function ChangeColor(){
 			itemOne.style.background =" red"
-			itemTwo.style.background =  "green"
+			itemTwo.style.background =  "#08D85A"
 			itemThree.style.background = "red"
 		},1)
 		setTimeout (function ChangeColorToZero(){
@@ -104,9 +104,9 @@ let	 puntosRandomTwoThree = puntosRandom()
 		},3000)
 	} else if (puntosRandomTwo < puntosRandomTwoThree && puntosRandomTwo < puntosRandomTwoOne){
 		setTimeout (function ChangeColor(){
-			itemOne.style.background = "green"
+			itemOne.style.background = "#08D85A"
 			itemTwo.style.background  = "red"
-			itemThree.style.background= "green"
+			itemThree.style.background= "#08D85A"
 		},1)
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background =" #bbb"
@@ -136,7 +136,7 @@ itemThree.addEventListener("click",()=>{
 		setTimeout (function ChangeColor(){
 			itemOne.style.background =" red"
 			itemTwo.style.background =  "red"
-			itemThree.style.background = "green"
+			itemThree.style.background = "#08D85A"
 		},1)
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background =" #bbb"
@@ -158,8 +158,8 @@ itemThree.addEventListener("click",()=>{
 		},3000)
 	} else if (puntosRandomThree < puntosRandomThreeOne && puntosRandomThree < puntosRandomThreeTwo){
 		setTimeout (function ChangeColor(){
-			itemOne.style.background = "green"
-			itemTwo.style.background  = "green"
+			itemOne.style.background = "#08D85A"
+			itemTwo.style.background  = "#08D85A"
 			itemThree.style.background= "red"
 		},1)
 		setTimeout (function ChangeColorToZero(){
