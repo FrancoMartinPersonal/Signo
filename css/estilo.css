@@ -1,17 +1,28 @@
+*{
+margin: 0;
+padding: 0;
+}
 body {
 	background:#eee;
 	font-family: sans-serif;
 	font-size: 20px;
 	box-sizing: border-box;
+	overflow-x: hidden;
+
 }
 .img-background{
-	position:absolute;
+	position: absolute;
+	
 	z-index: 0;
+}
+.img-background img{
+	width: 2100px;
+	object-fit:cover;
 }
 .modal-inicio {
 	background: #000a;
-	width:200vh;
-	height: 120%;
+	width:209vh;
+	height: 110%;
 	position: absolute;
 	margin: 0;
 	padding:0;
@@ -19,7 +30,7 @@ z-index: 100;
 	
 }
 .modal-datos {
-	margin: auto;
+	margin-left: 20%;
 	margin-top: 10%;
 	width: 45%;
 	height: 45%;
@@ -29,11 +40,15 @@ z-index: 80;
 	color: white;
 }
 .modal-datos__texto {
-padding-top: 20px;
-
+padding-top: 50px;
+font-size: 1.5em;
+}
+.modal-datos__texto p{
+padding-top: 40px;
+font-size: 25px;
 }
 .modal-datos__button{
-margin-top: 10%;
+margin-top: 50px;
 height: 50px;
 width: 100px;
 text-align: center;
@@ -41,7 +56,7 @@ font-size: 25px;
 background:#5cd6d5;
 color: white;
 border:5px solid #8cbdd9;
-transition: 1s background;
+transition: 0.21s background;
 z-index: 100;
 }
 
@@ -55,18 +70,14 @@ z-index: 100;
 }
 
 .container-flex {
-	margin-top: 250px;
+	bottom: 450px;
+	right:25%;
 	display: flex;
 	justify-content: center;
+	position: absolute;
 	z-index: 80;
 }
-.imgs{
-	display: block;
-	width: 170px;
-	text-align: center;
-  margin: auto;
-  margin-top: 33%;
-}
+
 .item-flex {
 	
 	width:250px;
@@ -75,7 +86,7 @@ z-index: 100;
 	border: 25px solid #2c265aee;
 	border-radius: 7px;
 	margin: 10px 50px;
-	transition: 0.5s all;
+	transition: 0.1s background;
 	z-index: 80;
 }.item-flex:hover {
 	background:#5cd6d5aa;

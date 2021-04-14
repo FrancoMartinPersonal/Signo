@@ -10,24 +10,49 @@ botonPlay = document.querySelector (".modal-datos__button")
 imagenSigno1 = document.querySelector(".img-1")
 imagenSigno2 = document.querySelector(".img-2")
 imagenSigno3 = document.querySelector(".img-3")
-let puntosTotales =[]
-let puntosRandomOne;
-let puntosRandomTwo;
-let puntosRandomThree;
+let puntosTotales
+var puntosRandomOne = []
+var puntosRandomTwo = []
+var puntosRandomThree = []
+
+
 //declaraciones colores
 let rojo ="#f00a";
 let amarillo ="#d94a";
 let verde ="#08D85Aaa";
+//imagen signo de pregunta 
+itemOne.appendChild(imagenSigno1)
+imagenSigno1.style.display = "block"
+imagenSigno1.style.width = "170px"
+imagenSigno1.style.textAlign = "center"
+imagenSigno1.style.margin = "auto"
+imagenSigno1.style.marginTop = "33%"
+itemTwo.appendChild(imagenSigno2)
+imagenSigno2.style.display = "block"
+imagenSigno2.style.width = "170px"
+imagenSigno2.style.textAlign = "center"
+imagenSigno2.style.margin = "auto"
+imagenSigno2.style.marginTop = "33%"
+itemThree.appendChild(imagenSigno3)
+imagenSigno3.style.display = "block"
+imagenSigno3.style.width = "170px"
+imagenSigno3.style.textAlign = "center"
+imagenSigno3.style.margin = "auto"
+imagenSigno3.style.marginTop = "33%"
 //eventos del juego
     botonPlay.addEventListener ("click", ()=>{
     modal.style.display = "none";
     })
 	itemOne.addEventListener("click",()=>{
 		
-	 puntosRandomOne = puntosRandom()
+		puntosRandomOne.push(puntosRandom())
+		
 let	 puntosRandomOneTwo = puntosRandom()
-let	 puntosRandomOneThree = puntosRandom()
-	itemOne.innerHTML = `tus puntos son ${puntosRandomOne}`;
+let	 puntosRandomOneThree = puntosRandom()		
+		
+		itemOne.innerHTML = `tus puntos son ${puntosRandomOne[puntosRandomOne.length - 1]}`;
+	
+		almacenarScore(puntosRandomOne,puntosRandomTwo,puntosRandomThree) // almacenaje
 	setTimeout(function renovar(){
 		itemOne.innerHTML = "  "
 		itemTwo.innerHTML = "  "
@@ -131,13 +156,16 @@ let	 puntosRandomOneThree = puntosRandom()
 	}
 })
 itemTwo.addEventListener("click",()=>{
+	
 		
-	 puntosRandomTwo = puntosRandom()
+	 puntosRandomTwo.push(puntosRandom())
 let	 puntosRandomTwoOne = puntosRandom()
 let	 puntosRandomTwoThree = puntosRandom()
-	itemTwo.innerHTML = `tus puntos son ${puntosRandomTwo}`;
+		itemTwo.innerHTML = `tus puntos son ${puntosRandomTwo[puntosRandomTwo.length - 1]}`;
 	itemOne.innerHTML = `podrían haber sido ${puntosRandomTwoOne}`
 	itemThree.innerHTML = `podrían haber sido ${puntosRandomTwoThree}`
+	almacenarScore(puntosRandomOne, puntosRandomTwo, puntosRandomThree) // almacenaje
+	
 	setTimeout(function renovar(){
 		itemOne.innerHTML = "  "
 		itemTwo.innerHTML = "  "
@@ -243,12 +271,13 @@ let	 puntosRandomTwoThree = puntosRandom()
 })
 itemThree.addEventListener("click",()=>{
 
-	puntosRandomThree = puntosRandom();
+	puntosRandomThree.push(puntosRandom());
 	puntosRandomThreeOne = puntosRandom();
 	puntosRandomThreeTwo = puntosRandom();
-		itemThree.innerHTML = `tus puntos son ${puntosRandomThree}`
+	itemThree.innerHTML = `tus puntos son ${puntosRandomThree[puntosRandomThree.length - 1]}`
 		itemTwo.innerHTML = `podrían haber sido ${puntosRandomThreeOne}`
 	itemOne.innerHTML = `podrían haber sido ${puntosRandomThreeTwo}`
+	almacenarScore(puntosRandomOne, puntosRandomTwo, puntosRandomThree)
 	setTimeout(function renovar(){
 		itemOne.innerHTML = "  "
 		itemTwo.innerHTML = "  "
@@ -348,10 +377,29 @@ itemThree.addEventListener("click",()=>{
 		},3000)
 	}
 	
-	
-	
-	
 })
+//almacenar score
+
+
+function almacenarScore(score,score2,score3) {
+	var almacen=0
+	var almacen1 = 0
+	var almacen2 = 0
+	score.forEach(element => {
+			almacen += element	 
+	})
+	score2.forEach(element => {
+		almacen1 += element
+	})
+	score3.forEach(element => {
+		almacen2 += element
+	})
+	var almacenFinal = almacen + almacen1 + almacen2;
+	console.log("juan " + almacenFinal)
+	return almacen
+}
+
+	
 
 
 
@@ -397,9 +445,7 @@ let carta1 = new Cartas (puntosRandom())
 let carta2 = new Cartas (puntosRandom())
 let carta3 = new Cartas (puntosRandom())
 
-console.log(carta1.cartasInfo())
-console.log(carta2.cartasInfo())
-console.log(carta3.cartasInfo())
+
 
 
 
