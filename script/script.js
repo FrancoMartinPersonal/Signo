@@ -2,6 +2,9 @@
 itemOne = document.querySelector(".Item-1")
 itemTwo = document.querySelector(".Item-2")
 itemThree = document.querySelector(".Item-3")
+itemOneP = document.querySelector(".item-flex-1")
+itemTwoP = document.querySelector(".item-flex-2")
+itemThreeP = document.querySelector(".item-flex-3")
 AllItems = document.querySelector(".item-flex")
 player = document.querySelector(".jugador")
 modal = document.querySelector(".modal-inicio")
@@ -10,16 +13,16 @@ botonPlay = document.querySelector (".modal-datos__button")
 imagenSigno1 = document.querySelector(".img-1")
 imagenSigno2 = document.querySelector(".img-2")
 imagenSigno3 = document.querySelector(".img-3")
-let puntosTotales
+var puntosTotales
 var puntosRandomOne = []
 var puntosRandomTwo = []
 var puntosRandomThree = []
 
 
 //declaraciones colores
-let rojo ="#f00a";
-let amarillo ="#d94a";
-let verde ="#08D85Aaa";
+let rojo ="#e44e";
+let amarillo ="#dc4e";
+let verde ="#08A85Aee";
 //imagen signo de pregunta 
 itemOne.appendChild(imagenSigno1)
 imagenSigno1.style.display = "block"
@@ -27,6 +30,7 @@ imagenSigno1.style.width = "170px"
 imagenSigno1.style.textAlign = "center"
 imagenSigno1.style.margin = "auto"
 imagenSigno1.style.marginTop = "33%"
+
 itemTwo.appendChild(imagenSigno2)
 imagenSigno2.style.display = "block"
 imagenSigno2.style.width = "170px"
@@ -39,6 +43,10 @@ imagenSigno3.style.width = "170px"
 imagenSigno3.style.textAlign = "center"
 imagenSigno3.style.margin = "auto"
 imagenSigno3.style.marginTop = "33%"
+
+
+//pruebas
+
 //eventos del juego
     botonPlay.addEventListener ("click", ()=>{
     modal.style.display = "none";
@@ -48,111 +56,91 @@ imagenSigno3.style.marginTop = "33%"
 		puntosRandomOne.push(puntosRandom())
 		
 let	 puntosRandomOneTwo = puntosRandom()
-let	 puntosRandomOneThree = puntosRandom()		
+let	 puntosRandomOneThree = puntosRandom()	
+		itemOneP.style.display = "block"
+		itemThreeP.style.display = "block"
+		itemTwoP.style.display = "block"
+			itemOneP.innerHTML = `${puntosRandomOne[puntosRandomOne.length - 1]}`
 		
-		itemOne.innerHTML = `tus puntos son ${puntosRandomOne[puntosRandomOne.length - 1]}`;
-	
+		
+			itemTwoP.innerHTML = `${puntosRandomOneTwo}  `
+		
+			itemThreeP.innerHTML = ` ${puntosRandomOneThree}`
+			//aparecer, reaparecer signo
+			imagenSigno1.style.display ="none"
+			imagenSigno2.style.display = "none"
+			imagenSigno3.style.display = "none"
 		almacenarScore(puntosRandomOne,puntosRandomTwo,puntosRandomThree) // almacenaje
 	setTimeout(function renovar(){
-		itemOne.innerHTML = "  "
-		itemTwo.innerHTML = "  "
-		itemThree.innerHTML = "  "
+		itemOneP.innerHTML = "  "
+		itemTwoP.innerHTML = "  "
+		itemThreeP.innerHTML = "  "
+		
 	},3000)
-	itemTwo.innerHTML = `podrían haber sido ${puntosRandomOneTwo}`
-	itemThree.innerHTML = `podrían haber sido ${puntosRandomOneThree}`
-	if(puntosRandomOne > puntosRandomOneTwo  && puntosRandomOne >  puntosRandomOneThree){//mejor puntaje 
+	
+		if (puntosRandomOne[puntosRandomOne.length - 1] > puntosRandomOneTwo && puntosRandomOne[puntosRandomOne.length - 1] >  puntosRandomOneThree){//mejor puntaje
 		setTimeout (function ChangeColor(){
 			itemOne.style.background =`${verde}`
 			itemTwo.style.background =  `${rojo}`
 			itemThree.style.background = `${rojo}`
+			
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
+			
+		
+		},1000)
 
-	}else if ((puntosRandomOne >= puntosRandomOneTwo && puntosRandomOne <= puntosRandomOneThree) || 
-		(puntosRandomOne <= puntosRandomOneTwo && puntosRandomOne >= puntosRandomOneThree)) {//puntaje mejorable
+	}else if ((puntosRandomOne[puntosRandomOne.length - 1] >= puntosRandomOneTwo && puntosRandomOne[puntosRandomOne.length - 1] <= puntosRandomOneThree) || 
+		(puntosRandomOne[puntosRandomOne.length - 1] <= puntosRandomOneTwo && puntosRandomOne[puntosRandomOne.length - 1] >= puntosRandomOneThree)) {//puntaje mejorable
 		setTimeout (function ChangeColor(){
 			itemOne.style.background  =`${amarillo}`
 			itemTwo.style.background  = `${amarillo}`
 			itemThree.style.background = `${amarillo}`
 		},1)
+			setTimeout(() => {
+				itemOneP.style.display = "none"
+				itemThreeP.style.display = "none"
+				itemTwoP.style.display = "none"
+			}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background =" #bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
 			
-		},3000)
-	} else if (puntosRandomOne < puntosRandomOneThree && puntosRandomOne < puntosRandomOneTwo){ //puntaje horrible
+		},1000)
+	} else if (puntosRandomOne[puntosRandomOne.length - 1] < puntosRandomOneThree && puntosRandomOne[puntosRandomOne.length - 1] < puntosRandomOneTwo){ //puntaje horrible
 		setTimeout (function ChangeColor(){
 			itemOne.style.background = `${rojo}`
 			itemTwo.style.background  = `${verde}`
 			itemThree.style.background= `${verde}`
 		},1)
+			setTimeout(() => {
+				itemOneP.style.display = "none"
+				itemThreeP.style.display = "none"
+				itemTwoP.style.display = "none"
+			}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
+		},1000)
 	}
 })
 itemTwo.addEventListener("click",()=>{
@@ -161,226 +149,179 @@ itemTwo.addEventListener("click",()=>{
 	 puntosRandomTwo.push(puntosRandom())
 let	 puntosRandomTwoOne = puntosRandom()
 let	 puntosRandomTwoThree = puntosRandom()
-		itemTwo.innerHTML = `tus puntos son ${puntosRandomTwo[puntosRandomTwo.length - 1]}`;
-	itemOne.innerHTML = `podrían haber sido ${puntosRandomTwoOne}`
-	itemThree.innerHTML = `podrían haber sido ${puntosRandomTwoThree}`
+	itemOneP.style.display = "block"
+	itemThreeP.style.display = "block"
+	itemTwoP.style.display = "block"
+	itemOneP.innerHTML = puntosRandomTwoOne
+	itemTwoP.innerHTML = puntosRandomTwo[puntosRandomTwo.length - 1]
+	itemThreeP.innerHTML = puntosRandomTwoThree
+	//aparecer reaparecer signo
+	imagenSigno1.style.display = "none"
+	imagenSigno2.style.display = "none"
+	imagenSigno3.style.display = "none"
 	almacenarScore(puntosRandomOne, puntosRandomTwo, puntosRandomThree) // almacenaje
 	
 	setTimeout(function renovar(){
-		itemOne.innerHTML = "  "
-		itemTwo.innerHTML = "  "
-		itemThree.innerHTML = "  "
+		itemOneP.innerHTML = "  "
+		itemTwoP.innerHTML = "  "
+		itemThreeP.innerHTML = "  "
 	},3000)
-	if(puntosRandomTwo > puntosRandomTwoOne  && puntosRandomTwo >  puntosRandomTwoThree){
+	if (puntosRandomTwo[puntosRandomTwo.length - 1] > puntosRandomTwoOne && puntosRandomTwo[puntosRandomTwo.length - 1] >  puntosRandomTwoThree){
 		setTimeout (function ChangeColor(){
 			itemOne.style.background =`${rojo}`
 			itemTwo.style.background =  `${verde}`
 			itemThree.style.background = `${rojo}`
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
+		},1000)
 
-	}else if ((puntosRandomTwo >= puntosRandomTwoOne && puntosRandomTwo <= puntosRandomTwoThree) || 
-		(puntosRandomTwo <= puntosRandomTwoOne && puntosRandomTwo >= puntosRandomTwoThree)) {
+	} else if ((puntosRandomTwo[puntosRandomTwo.length - 1] >= puntosRandomTwoOne && puntosRandomTwo[puntosRandomTwo.length - 1] <= puntosRandomTwoThree) ||
+		(puntosRandomTwo[puntosRandomTwo.length - 1] <= puntosRandomTwoOne && puntosRandomTwo[puntosRandomTwo.length - 1] >= puntosRandomTwoThree)) {
 		setTimeout (function ChangeColor(){
 			itemOne.style.background  =`${amarillo}`
 			itemTwo.style.background = `${amarillo}`
 			itemThree.style.background = `${amarillo}`
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
-	} else if (puntosRandomTwo < puntosRandomTwoThree && puntosRandomTwo < puntosRandomTwoOne){
+		},1000)
+	} else if (puntosRandomTwo[puntosRandomTwo.length - 1] < puntosRandomTwoThree && puntosRandomTwo[puntosRandomTwo.length - 1] < puntosRandomTwoOne){
 		setTimeout (function ChangeColor(){
 			itemOne.style.background = `${verde}`
 			itemTwo.style.background  = `${rojo}`
 			itemThree.style.background= `${verde}`
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
+			
+		},1000)
 	}
 	
 	
 	
 	
 })
+
 itemThree.addEventListener("click",()=>{
 
 	puntosRandomThree.push(puntosRandom());
-	puntosRandomThreeOne = puntosRandom();
-	puntosRandomThreeTwo = puntosRandom();
-	itemThree.innerHTML = `tus puntos son ${puntosRandomThree[puntosRandomThree.length - 1]}`
-		itemTwo.innerHTML = `podrían haber sido ${puntosRandomThreeOne}`
-	itemOne.innerHTML = `podrían haber sido ${puntosRandomThreeTwo}`
+	let	puntosRandomThreeOne = puntosRandom()
+	let	puntosRandomThreeTwo = puntosRandom()
+	itemOneP.style.display = "block"
+	itemThreeP.style.display = "block"
+	itemTwoP.style.display = "block"
+	itemOneP.innerHTML =  puntosRandomThreeOne
+	itemTwoP.innerHTML= puntosRandomThreeTwo
+	itemThreeP.innerHTML = puntosRandomThree[puntosRandomThree.length - 1]
+	//aparecer reaparecer signo
+	imagenSigno1.style.display = "none"
+	imagenSigno2.style.display = "none"
+	imagenSigno3.style.display = "none"
 	almacenarScore(puntosRandomOne, puntosRandomTwo, puntosRandomThree)
 	setTimeout(function renovar(){
-		itemOne.innerHTML = "  "
-		itemTwo.innerHTML = "  "
-		itemThree.innerHTML = "  "
-	},3000)
-	if(puntosRandomThree > puntosRandomThreeOne  && puntosRandomThree >  puntosRandomThreeTwo){
+		itemOneP.innerHTML = "  "
+		itemTwoP.innerHTML = "  "
+		itemThreeP.innerHTML = "  "
+	},900)
+	if (puntosRandomThree[puntosRandomThree.length - 1] > puntosRandomThreeOne && puntosRandomThree[puntosRandomThree.length - 1] >  puntosRandomThreeTwo){
 		setTimeout (function ChangeColor(){
 			itemOne.style.background =`${rojo}`
 			itemTwo.style.background =  `${rojo}`
 			itemThree.style.background = `${verde}`
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
+		},1000)
 
-	}else if ((puntosRandomThree >= puntosRandomThreeOne && puntosRandomThree <= puntosRandomThreeTwo) || 
-		(puntosRandomThree <= puntosRandomThreeOne && puntosRandomThree >= puntosRandomThreeTwo)) {
+	} else if ((puntosRandomThree[puntosRandomThree.length - 1] >= puntosRandomThreeOne && puntosRandomThree[puntosRandomThree.length - 1] <= puntosRandomThreeTwo) ||
+		(puntosRandomThree[puntosRandomThree.length - 1] <= puntosRandomThreeOne && puntosRandomThree[puntosRandomThree.length - 1] >= puntosRandomThreeTwo)) {
 		setTimeout (function ChangeColor(){
 			itemOne.style.background  =`${amarillo}`
 			itemTwo.style.background  = `${amarillo}`
 			itemThree.style.background = `${amarillo}`
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
-	} else if (puntosRandomThree < puntosRandomThreeOne && puntosRandomThree < puntosRandomThreeTwo){
+		},1000)
+	} else if (puntosRandomThree[puntosRandomThree.length - 1] < puntosRandomThreeOne && puntosRandomThree[puntosRandomThree.length - 1] < puntosRandomThreeTwo){
 		setTimeout (function ChangeColor(){
 			itemOne.style.background = `${verde}`
 			itemTwo.style.background  = `${verde}`
 			itemThree.style.background= `${rojo}`
 		},1)
+		setTimeout(() => {
+			itemOneP.style.display = "none"
+			itemThreeP.style.display = "none"
+			itemTwoP.style.display = "none"
+		}, 900);
 		setTimeout (function ChangeColorToZero(){
 			itemOne.style.background ="#bbb0"
 			itemTwo.style.background =  "#bbb0"
 			itemThree.style.background = "#bbb0"
-			//agregado de imagen porque se borra
-			itemOne.appendChild(imagenSigno1)
 			imagenSigno1.style.display = "block"
-			imagenSigno1.style.width = "170px"
-			imagenSigno1.style.textAlign = "center"
-			imagenSigno1.style.margin = "auto"
-			imagenSigno1.style.marginTop = "33%"
-			itemTwo.appendChild(imagenSigno2)
 			imagenSigno2.style.display = "block"
-			imagenSigno2.style.width = "170px"
-			imagenSigno2.style.textAlign = "center"
-			imagenSigno2.style.margin = "auto"
-			imagenSigno2.style.marginTop = "33%"
-			itemThree.appendChild(imagenSigno3)
 			imagenSigno3.style.display = "block"
-			imagenSigno3.style.width = "170px"
-			imagenSigno3.style.textAlign = "center"
-			imagenSigno3.style.margin = "auto"
-			imagenSigno3.style.marginTop = "33%"
-		},3000)
+		},1000)
 	}
 	
 })
+
+
+
+
+
 //almacenar score
-
-
 function almacenarScore(score,score2,score3) {
 	var almacen=0
 	var almacen1 = 0
@@ -395,8 +336,8 @@ function almacenarScore(score,score2,score3) {
 		almacen2 += element
 	})
 	var almacenFinal = almacen + almacen1 + almacen2;
-	console.log("juan " + almacenFinal)
-	return almacen
+	
+	return player.innerHTML ="score: " +almacenFinal
 }
 
 	

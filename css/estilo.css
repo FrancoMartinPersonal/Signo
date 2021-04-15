@@ -3,7 +3,9 @@ margin: 0;
 padding: 0;
 }
 body {
-	background:#eee;
+	background-image:  url("casino.jpg") ;
+	background-color: turquoise;
+	
 	font-family: sans-serif;
 	font-size: 20px;
 	box-sizing: border-box;
@@ -65,8 +67,15 @@ z-index: 100;
 	z-index: 80;
 }
 .jugador {
-	z-index: 80;
-	margin: 50px;
+	z-index: 100;
+	position:absolute;
+	padding: 10px;
+	right: 46%;
+	top: 0.5em;
+	font-size:3em;
+	margin: auto;
+	color: white;
+	border: 15px solid #2c265ad0;
 }
 
 .container-flex {
@@ -82,14 +91,42 @@ z-index: 100;
 	
 	width:250px;
 	height:400px;
-	
+	color:white;
 	border: 25px solid #2c265aee;
 	border-radius: 7px;
 	margin: 10px 50px;
-	transition: 0.1s background;
 	z-index: 80;
 }.item-flex:hover {
 	background:#5cd6d5aa;
 	z-index: 80;
 	
+}
+.item-flex-1{
+	font-size: 3em;
+text-align: center;
+	display:none;
+	animation: items 1s ease-in;
+	animation-fill-mode:initial;
+}
+.item-flex-2{
+	font-size: 3em;
+	text-align: center;
+	display:none;
+	animation: items 1s ease-in;
+	animation-fill-mode:initial;
+}
+.item-flex-3{
+	font-size: 3em;
+	text-align: center;
+	display:none;
+	animation: items 1s ease-in;
+	animation-fill-mode:initial;
+}
+
+@keyframes items {
+
+	100%{
+	transform:translateY(-200px);
+	opacity: .1;
+	}
 }
