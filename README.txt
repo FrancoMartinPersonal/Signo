@@ -40,5 +40,10 @@ se separa acciones de puntaje y frase de puntaje
 
 se le agrega una animacion que le da interactividad al programa en la suma de puntajes 
 
-voy a preguntar por funcionalidades para agregar a amigos´
 
+
+15/4/21 0.1.6
+
+Agrego una mejor explicacion en el modal
+
+voy a preguntar por funcionalidades para agregar a amigos´

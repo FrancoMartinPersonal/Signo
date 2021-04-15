@@ -46,11 +46,16 @@ padding-top: 50px;
 font-size: 1.5em;
 }
 .modal-datos__texto p{
-padding-top: 40px;
+padding-top: 15px;
 font-size: 25px;
 }
+#p-rebelde{
+	padding:1em 4em;
+	font-style: italic;
+	font-size: 25px;
+}
 .modal-datos__button{
-margin-top: 50px;
+margin-top: 30px;
 height: 50px;
 width: 100px;
 text-align: center;
